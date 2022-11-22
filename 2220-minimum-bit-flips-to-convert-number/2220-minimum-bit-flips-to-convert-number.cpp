@@ -1,14 +1,16 @@
 class Solution {
 public:
     int minBitFlips(int start, int goal) {
-        bitset<32> bs1(start);
-        bitset<32> bs2(goal);
-        int cnt=0;
-        for(int i=0;i<32;i++){
-            if(bs1[i]!=bs2[i]){
-                cnt++;
+        int count = 0;
+        while(start > 0 or goal > 0){
+            int d1 = (start & 1);
+            int d2 = (goal & 1);
+            if((d1^d2) != 0){
+                count++;
             }
+            start = start >> 1;
+            goal = goal >> 1;
         }
-        return cnt;
+        return count;
     }
 };
