@@ -6,17 +6,8 @@ public:
         }
         else{
             unordered_map<string, int> ump;
-            for(int i = 0; i <= s.size()-10; i++){
-                string str = "";
-                for(int j = i; j < i+10; j++){
-                    str += s[j];
-                }
-                if(ump.find(str) == ump.end()){
-                    ump.insert({str, 1});
-                }
-                else{
-                    ump[str]++;
-                }
+            for(int i = 0; i < s.size()-9; i++){
+                ump[s.substr(i, 10)]++;
             }
             vector<string> ans;
             for(auto x : ump){
